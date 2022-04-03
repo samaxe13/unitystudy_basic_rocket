@@ -1,16 +1,20 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class RocketMenu : MonoBehaviour
 {
     [SerializeField] float flySpeed = 100f;
-    [SerializeField] AudioClip flySound;
-    [SerializeField] AudioClip boomSound;
-    [SerializeField] ParticleSystem flyParticles;
-    [SerializeField] ParticleSystem boomParticles;
+
+    public UnityEvent flyStart;
+    public UnityEvent flyEnd;
+    public UnityEvent death;
 
     Rigidbody rigidBody;
     AudioSource audioSource;
+
+    enum States {Playing, Dead};
+    States state = States.Playing;
 
     bool collisionOff = false;
 
@@ -22,15 +26,16 @@ public class RocketMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W)) 
+        if (state == States.Playing)
         {
-            rigidBody.AddRelativeForce(Vector3.up * flySpeed * Time.deltaTime);
-            if(audioSource.isPlaying == false)
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space)) 
             {
-                audioSource.PlayOneShot(flySound);
-                flyParticles.Play();
+                rigidBody.AddRelativeForce(Vector3.up * flySpeed * Time.deltaTime);
+                if(audioSource.isPlaying == false) flyStart?.Invoke();
             }
+            else flyEnd?.Invoke();  
         }
+        
     }
 
     void OnCollisionEnter(Collision collision) 
@@ -39,19 +44,18 @@ public class RocketMenu : MonoBehaviour
         {
             if(collision.gameObject.tag == "Respawn")
             {
+                state = States.Dead;
                 rigidBody.AddRelativeForce(Vector3.back * flySpeed);
                 collisionOff = true;
-                audioSource.Stop();
-                audioSource.PlayOneShot(boomSound);
-                boomParticles.Play();
-                flyParticles.Stop();
-                Invoke("LoadFirstLevel", 3f);
+                death?.Invoke();
+                Invoke("LoadNextLevel", 3f);
             }
         }
     }
 
-    void LoadFirstLevel()
+    void LoadNextLevel()
     {
-        SceneManager.LoadScene(1);
+        if(PlayerPrefs.GetInt("current level") == 0) SceneManager.LoadScene(1);
+        SceneManager.LoadScene(PlayerPrefs.GetInt("current level"));
     }
 }
