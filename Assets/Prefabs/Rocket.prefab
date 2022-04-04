@@ -168,9 +168,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4697635c943578e4da5678d19fe364bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gasTotal: 200
+  gasPerSecond: 10
+  gasPerTank: 20
   rotSpeed: 200
   flySpeed: 1000
-  energyPickedUp:
+  gasChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  gasPickedUp:
     m_PersistentCalls:
       m_Calls: []
   flyStart:

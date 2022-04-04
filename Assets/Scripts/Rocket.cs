@@ -3,17 +3,21 @@ using UnityEngine.Events;
 
 public class Rocket : MonoBehaviour
 {
-    
+    [SerializeField] public float gasTotal = 300f;
+    [SerializeField] float gasPerSecond = 100f;
+    [SerializeField] float gasPerTank = 50f;
     [SerializeField] float rotSpeed = 100f;
     [SerializeField] float flySpeed = 100f;
 
-    public UnityEvent energyPickedUp;
+    public UnityEvent gasChanged;
+    public UnityEvent gasPickedUp;
     public UnityEvent flyStart;
     public UnityEvent flyEnd;
     public death death;
     public finish finish;
 
     bool collisionOff = false;
+
 
     Rigidbody rigidBody;
     AudioSource audioSource;
@@ -54,22 +58,24 @@ public class Rocket : MonoBehaviour
         }        
     }
 
-    void OnTriggerEnter(Collider energy)
+    void OnTriggerEnter(Collider gas)
     {
         if (state == States.Dead || state == States.NextLevel) return;
-        switch (energy.gameObject.tag)
+        if (gas.gameObject.tag == "Battery")
         {
-            case "Battery":
-                energyPickedUp?.Invoke();
-                Destroy(energy.gameObject);
-                break;
+            gasTotal += gasPerTank;
+            gasChanged?.Invoke();
+            gasPickedUp?.Invoke();
+            Destroy(gas.gameObject);
         }
     }
     
     void Launch()
     {
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space))
+        if (gasTotal > 0f && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space)))
         {
+            gasTotal -= gasPerSecond * Time.deltaTime;
+            gasChanged?.Invoke();
             rigidBody.AddRelativeForce(Vector3.up * flySpeed * Time.deltaTime);
             if(audioSource.isPlaying == false) flyStart?.Invoke();
         }
