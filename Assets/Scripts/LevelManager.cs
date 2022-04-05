@@ -3,13 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    int activeLevelIndex;
-    public Rocket rocket;
+    [SerializeField] private Rocket rocket;
+    private int _activeLevelIndex;
+    private string _currentLevel = "current level";
 
     private void Start() 
     {
-        activeLevelIndex = SceneManager.GetActiveScene().buildIndex;
-        if (PlayerPrefs.GetInt("current level") != activeLevelIndex) PlayerPrefs.SetInt("current level", activeLevelIndex);
+        _activeLevelIndex = SceneManager.GetActiveScene().buildIndex;
+        if (PlayerPrefs.GetInt(_currentLevel) != _activeLevelIndex) PlayerPrefs.SetInt(_currentLevel, _activeLevelIndex);
         rocket.death.AddListener(LoadHandler);
         rocket.finish.AddListener(LoadHandler);
     }
@@ -29,17 +30,17 @@ public class LevelManager : MonoBehaviour
 
     private void LoadCurrentLevel()
     {
-        SceneManager.LoadScene(PlayerPrefs.GetInt("current level"));
+        SceneManager.LoadScene(PlayerPrefs.GetInt(_currentLevel));
     }
 
     private void LoadNextLevel()
     {
-        if (activeLevelIndex == SceneManager.sceneCountInBuildSettings - 1)
+        if (_activeLevelIndex == SceneManager.sceneCountInBuildSettings - 1)
         {
-            activeLevelIndex = -1;
-            PlayerPrefs.SetInt("current level", 1);
+            _activeLevelIndex = -1;
+            PlayerPrefs.SetInt(_currentLevel, 1);
         }
-        SceneManager.LoadScene(activeLevelIndex + 1);
+        SceneManager.LoadScene(_activeLevelIndex + 1);
     }
 
     private void LoadMenu()

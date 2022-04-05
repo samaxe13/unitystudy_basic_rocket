@@ -831,6 +831,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4697635c943578e4da5678d19fe364bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &996771296 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 672350979559159768, guid: 051e52af05925c5429d2ec8392252549, type: 3}
+  m_PrefabInstance: {fileID: 672350979559159766}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed6d19f5147cfe46b77afa364483dbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1056813669
 GameObject:
   m_ObjectHideFlags: 0
@@ -1399,6 +1410,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1495288213, guid: 4af9c48fdd37da249b095d46fbe106cb, type: 3}
+      propertyPath: gasChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 996771296}
     - target: {fileID: 175631348507308262, guid: 4af9c48fdd37da249b095d46fbe106cb, type: 3}
       propertyPath: m_Name
       value: Rocket

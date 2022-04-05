@@ -3,107 +3,112 @@ using UnityEngine.Events;
 
 public class Rocket : MonoBehaviour
 {
-    [SerializeField] public float gasTotal = 300f;
-    [SerializeField] float gasPerSecond = 100f;
-    [SerializeField] float gasPerTank = 50f;
-    [SerializeField] float rotSpeed = 100f;
-    [SerializeField] float flySpeed = 100f;
+    public float _gasMax = 300f;
+    [SerializeField] private float _gasTotal = 300f;
+    [SerializeField] private float _gasPerSecond = 100f;
+    [SerializeField] private float _gasPerTank = 50f;
+    [SerializeField] private float _rotSpeed = 200f;
+    [SerializeField] private float _flySpeed = 1000f;
 
-    public UnityEvent gasChanged;
+    public gasChanged gasChanged;
     public UnityEvent gasPickedUp;
     public UnityEvent flyStart;
     public UnityEvent flyEnd;
     public death death;
     public finish finish;
 
-    bool collisionOff = false;
+    private bool _collisionOff = false;
 
 
-    Rigidbody rigidBody;
-    AudioSource audioSource;
+    private Rigidbody _rigidBody;
+    private AudioSource _audioSource;
 
     enum States {Playing, Dead, NextLevel};
-    States state = States.Playing;
+    States _state = States.Playing;
 
-    void Start()
+    private void Start()
     {
-        state = States.Playing;
-        rigidBody = GetComponent<Rigidbody>();
-        audioSource = GetComponent<AudioSource>();
+        _state = States.Playing;
+        _rigidBody = GetComponent<Rigidbody>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
-    void Update()
+    private void Update()
     {
-        if (state == States.Playing)
+        if (_state == States.Playing)
         {
             Launch();
             Rotation();
         }
     }
     
-    void OnCollisionEnter(Collision collision) 
+    private void OnCollisionEnter(Collision collision) 
     {
-        if (state == States.Dead || state == States.NextLevel || collisionOff) return;
-        switch (collision.gameObject.tag)
+        if (_state == States.Playing && !_collisionOff)
         {
-            case "Safe":
-                print("ok");
-                break;
-            case "Finish":
-                Finish();
-                break;
-            default:
-                Lose();
-                break;
-        }        
+            switch (collision.gameObject.tag)
+            {
+                case "Safe":
+                    print("ok");
+                    break;
+                case "Finish":
+                    Finish();
+                    break;
+                default:
+                    Lose();
+                    break;
+            }
+        }
     }
 
-    void OnTriggerEnter(Collider gas)
+    private void OnTriggerEnter(Collider gas)
     {
-        if (state == States.Dead || state == States.NextLevel) return;
-        if (gas.gameObject.tag == "Battery")
+        if (_state == States.Playing && gas.gameObject.tag == "Battery")
         {
-            gasTotal += gasPerTank;
-            gasChanged?.Invoke();
+            gas.enabled = false;
+            _gasTotal += _gasPerTank;
+            gasChanged?.Invoke(_gasTotal);
             gasPickedUp?.Invoke();
-            Destroy(gas.gameObject);
+            Destroy(gas.gameObject, 2f);
         }
     }
     
-    void Launch()
+    private void Launch()
     {
-        if (gasTotal > 0f && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space)))
+        if (_gasTotal > 0f && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space)))
         {
-            gasTotal -= gasPerSecond * Time.deltaTime;
-            gasChanged?.Invoke();
-            rigidBody.AddRelativeForce(Vector3.up * flySpeed * Time.deltaTime);
-            if(audioSource.isPlaying == false) flyStart?.Invoke();
+            _gasTotal -= _gasPerSecond * Time.deltaTime;
+            gasChanged?.Invoke(_gasTotal);
+            _rigidBody.AddRelativeForce(Vector3.up * _flySpeed * Time.deltaTime);
+            if(_audioSource.isPlaying == false) flyStart?.Invoke();
         }
         else flyEnd?.Invoke();
     }
 
-    void Rotation()
+    private void Rotation() // TODO: 1) GetKey -> GetAxis 2) replace if statements with transform.Rotate(Axis * Vector3.forward * _rotSpeed * Time.deltaTime)
     {
-        rigidBody.freezeRotation = true;
-        if (Input.GetKey(KeyCode.A)) transform.Rotate(Vector3.forward * rotSpeed * Time.deltaTime);
-        else if (Input.GetKey(KeyCode.D)) transform.Rotate(-Vector3.forward * rotSpeed * Time.deltaTime);
-        rigidBody.freezeRotation = false;
+        _rigidBody.freezeRotation = true;
+        if (Input.GetKey(KeyCode.A)) transform.Rotate(Vector3.forward * _rotSpeed * Time.deltaTime); 
+        else if (Input.GetKey(KeyCode.D)) transform.Rotate(-Vector3.forward * _rotSpeed * Time.deltaTime);
+        _rigidBody.freezeRotation = false;
     }
 
-    void Lose()
+    private void Lose()
     {
-        state = States.Dead;
+        _state = States.Dead;
         flyEnd?.Invoke();
         death?.Invoke("death");
     }
 
-    void Finish()
+    private void Finish()
     {
+        _state = States.NextLevel;
         finish?.Invoke("finish");
-        state = States.NextLevel;
     }
 }
 [System.Serializable]
 public class death : UnityEvent<string> { }
 [System.Serializable]
 public class finish : UnityEvent<string> { }
+[System.Serializable]
+public class gasChanged : UnityEvent<float> { }
