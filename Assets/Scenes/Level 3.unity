@@ -360,8 +360,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17cb2f4a41f720a4bb96a90e5638892f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePosition: {x: 8, y: 0, z: 0}
-  moveSpeed: 0.7
+  movePosition: {x: 0, y: 0, z: 0}
+  moveSpeed: 0
   moveProgress: 0
 --- !u!4 &599725510
 Transform:
@@ -1511,12 +1511,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 536400220, guid: 5242bcb76aeeaa24c8bfe1888bf79e07, type: 3}
-      propertyPath: moveProgress
+      propertyPath: _moveSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 536400220, guid: 5242bcb76aeeaa24c8bfe1888bf79e07, type: 3}
+      propertyPath: _moveProgress
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 536400220, guid: 5242bcb76aeeaa24c8bfe1888bf79e07, type: 3}
       propertyPath: movePosition.y
       value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 536400220, guid: 5242bcb76aeeaa24c8bfe1888bf79e07, type: 3}
+      propertyPath: _movePosition.y
+      value: 168.04
       objectReference: {fileID: 0}
     - target: {fileID: 5425251637441463975, guid: 5242bcb76aeeaa24c8bfe1888bf79e07, type: 3}
       propertyPath: m_RootOrder

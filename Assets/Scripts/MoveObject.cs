@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class MoveObject : MonoBehaviour
 {
-    [SerializeField] Vector3 movePosition;
-    [SerializeField] float moveSpeed;
-    [SerializeField] [Range(0, 1)] float moveProgress;
-    Vector3 startPosition;
+    [SerializeField] private Vector3 _movePosition;
+    [SerializeField] private float _moveSpeed;
+    [SerializeField][Range(0, 1)] private float _moveProgress;
 
-    void Start()
+    private Vector3 _startPosition;
+
+    private void Start()
     {
-        startPosition = transform.position;
+        _startPosition = transform.position;
     }
 
-    void Update()
+    private void Update()
     {
-        moveProgress = Mathf.PingPong(Time.time * moveSpeed, 1);
-        Vector3 offset = movePosition * moveProgress;
-        transform.position = startPosition + offset;
+        _moveProgress = Mathf.PingPong(Time.time * _moveSpeed, 1);
+        Vector3 offset = _movePosition * _moveProgress;
+        transform.position = _startPosition + offset;
     }
 }

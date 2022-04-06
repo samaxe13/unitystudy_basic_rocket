@@ -3,12 +3,13 @@ using UnityEngine.Events;
 
 public class Rocket : MonoBehaviour
 {
-    public float _gasMax = 300f;
     [SerializeField] private float _gasTotal = 300f;
     [SerializeField] private float _gasPerSecond = 100f;
     [SerializeField] private float _gasPerTank = 50f;
     [SerializeField] private float _rotSpeed = 200f;
     [SerializeField] private float _flySpeed = 1000f;
+
+    public float gasMax = 300f;
 
     public gasChanged gasChanged;
     public UnityEvent gasPickedUp;
@@ -19,15 +20,15 @@ public class Rocket : MonoBehaviour
 
     private bool _collisionOff = false;
 
-
     private Rigidbody _rigidBody;
     private AudioSource _audioSource;
 
-    enum States {Playing, Dead, NextLevel};
-    States _state = States.Playing;
+    private enum States { Playing, Dead, NextLevel };
+    private States _state = States.Playing;
 
     private void Start()
     {
+        _gasTotal = gasMax;
         _state = States.Playing;
         _rigidBody = GetComponent<Rigidbody>();
         _audioSource = GetComponent<AudioSource>();
@@ -38,11 +39,11 @@ public class Rocket : MonoBehaviour
         if (_state == States.Playing)
         {
             Launch();
-            Rotation();
+            RotateRocket();
         }
     }
-    
-    private void OnCollisionEnter(Collision collision) 
+
+    private void OnCollisionEnter(Collision collision)
     {
         if (_state == States.Playing && !_collisionOff)
         {
@@ -72,7 +73,7 @@ public class Rocket : MonoBehaviour
             Destroy(gas.gameObject, 2f);
         }
     }
-    
+
     private void Launch()
     {
         if (_gasTotal > 0f && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space)))
@@ -80,15 +81,15 @@ public class Rocket : MonoBehaviour
             _gasTotal -= _gasPerSecond * Time.deltaTime;
             gasChanged?.Invoke(_gasTotal);
             _rigidBody.AddRelativeForce(Vector3.up * _flySpeed * Time.deltaTime);
-            if(_audioSource.isPlaying == false) flyStart?.Invoke();
+            if (_audioSource.isPlaying == false) flyStart?.Invoke();
         }
         else flyEnd?.Invoke();
     }
 
-    private void Rotation() // TODO: 1) GetKey -> GetAxis 2) replace if statements with transform.Rotate(Axis * Vector3.forward * _rotSpeed * Time.deltaTime)
+    private void RotateRocket() // TODO: 1) GetKey -> GetAxis 2) replace if statements with transform.Rotate(Axis * Vector3.forward * _rotSpeed * Time.deltaTime)
     {
         _rigidBody.freezeRotation = true;
-        if (Input.GetKey(KeyCode.A)) transform.Rotate(Vector3.forward * _rotSpeed * Time.deltaTime); 
+        if (Input.GetKey(KeyCode.A)) transform.Rotate(Vector3.forward * _rotSpeed * Time.deltaTime);
         else if (Input.GetKey(KeyCode.D)) transform.Rotate(-Vector3.forward * _rotSpeed * Time.deltaTime);
         _rigidBody.freezeRotation = false;
     }

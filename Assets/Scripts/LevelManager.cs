@@ -7,23 +7,23 @@ public class LevelManager : MonoBehaviour
     private int _activeLevelIndex;
     private string _currentLevel = "current level";
 
-    private void Start() 
+    private void Start()
     {
         _activeLevelIndex = SceneManager.GetActiveScene().buildIndex;
         if (PlayerPrefs.GetInt(_currentLevel) != _activeLevelIndex) PlayerPrefs.SetInt(_currentLevel, _activeLevelIndex);
-        rocket.death.AddListener(LoadHandler);
-        rocket.finish.AddListener(LoadHandler);
+        rocket.death.AddListener(HandleLoading);
+        rocket.finish.AddListener(HandleLoading);
     }
 
-    private void LoadHandler(string eventName)
+    private void HandleLoading(string eventName)
     {
-        switch(eventName)
+        switch (eventName)
         {
             case "death":
-                Invoke("LoadCurrentLevel", 2f);
+                Invoke(nameof(LoadCurrentLevel), 2f);
                 break;
             case "finish":
-                Invoke("LoadNextLevel", 2f);
+                Invoke(nameof(LoadNextLevel), 2f);
                 break;
         }
     }

@@ -7,13 +7,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gasBarFill;
     [SerializeField] private Rocket rocket;
 
-    private void Start() 
+    private void Start()
     {
-        gasBar.maxValue = rocket._gasMax;
-        UpdateUI(rocket._gasMax);
+        gasBar.maxValue = rocket.gasMax;
+        UpdateUI(rocket.gasMax);
     }
 
-    public void UpdateUI(float gasTotal) 
+    public void UpdateUI(float gasTotal)
     {
         gasBar.value = gasTotal;
         if (gasBar.value <= 0) gasBarFill.SetActive(false);
