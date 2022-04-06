@@ -3,20 +3,18 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private Slider gasBar;
-    [SerializeField] private GameObject gasBarFill;
-    [SerializeField] private Rocket rocket;
+    [SerializeField] private Slider _gasBar;
+    [SerializeField] private Rocket _rocket;
 
     private void Start()
     {
-        gasBar.maxValue = rocket.gasMax;
-        UpdateUI(rocket.gasMax);
+        _gasBar.maxValue = _rocket.GasMax;
+        UpdateUI(_rocket.GasMax);
     }
 
     public void UpdateUI(float gasTotal)
     {
-        gasBar.value = gasTotal;
-        if (gasBar.value <= 0) gasBarFill.SetActive(false);
-        else gasBarFill.SetActive(true);
+        _gasBar.value = gasTotal;
+        _gasBar.fillRect.gameObject.SetActive(_gasBar.value > 0);
     }
 }

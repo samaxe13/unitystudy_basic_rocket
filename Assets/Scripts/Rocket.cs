@@ -9,14 +9,14 @@ public class Rocket : MonoBehaviour
     [SerializeField] private float _rotSpeed = 200f;
     [SerializeField] private float _flySpeed = 1000f;
 
-    public float gasMax = 300f;
+    public float GasMax = 300f;
 
-    public gasChanged gasChanged;
-    public UnityEvent gasPickedUp;
-    public UnityEvent flyStart;
-    public UnityEvent flyEnd;
-    public death death;
-    public finish finish;
+    public GasChanged GasChanged;
+    public UnityEvent GasPickedUp;
+    public UnityEvent FlyStart;
+    public UnityEvent FlyEnd;
+    public Death Death;
+    public Finish Finish;
 
     private bool _collisionOff = false;
 
@@ -28,7 +28,7 @@ public class Rocket : MonoBehaviour
 
     private void Start()
     {
-        _gasTotal = gasMax;
+        _gasTotal = GasMax;
         _state = States.Playing;
         _rigidBody = GetComponent<Rigidbody>();
         _audioSource = GetComponent<AudioSource>();
@@ -53,7 +53,7 @@ public class Rocket : MonoBehaviour
                     print("ok");
                     break;
                 case "Finish":
-                    Finish();
+                    Win();
                     break;
                 default:
                     Lose();
@@ -68,8 +68,8 @@ public class Rocket : MonoBehaviour
         {
             gas.enabled = false;
             _gasTotal += _gasPerTank;
-            gasChanged?.Invoke(_gasTotal);
-            gasPickedUp?.Invoke();
+            GasChanged?.Invoke(_gasTotal);
+            GasPickedUp?.Invoke();
             Destroy(gas.gameObject, 2f);
         }
     }
@@ -79,37 +79,37 @@ public class Rocket : MonoBehaviour
         if (_gasTotal > 0f && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space)))
         {
             _gasTotal -= _gasPerSecond * Time.deltaTime;
-            gasChanged?.Invoke(_gasTotal);
+            GasChanged?.Invoke(_gasTotal);
             _rigidBody.AddRelativeForce(Vector3.up * _flySpeed * Time.deltaTime);
-            if (_audioSource.isPlaying == false) flyStart?.Invoke();
+            if (_audioSource.isPlaying == false) FlyStart?.Invoke();
         }
-        else flyEnd?.Invoke();
+        else FlyEnd?.Invoke();
     }
 
     private void RotateRocket() // TODO: 1) GetKey -> GetAxis 2) replace if statements with transform.Rotate(Axis * Vector3.forward * _rotSpeed * Time.deltaTime)
     {
         _rigidBody.freezeRotation = true;
-        if (Input.GetKey(KeyCode.A)) transform.Rotate(Vector3.forward * _rotSpeed * Time.deltaTime);
-        else if (Input.GetKey(KeyCode.D)) transform.Rotate(-Vector3.forward * _rotSpeed * Time.deltaTime);
+        if (Input.GetKey(KeyCode.A)) transform.Rotate(_rotSpeed * Time.deltaTime * Vector3.forward);
+        else if (Input.GetKey(KeyCode.D)) transform.Rotate(_rotSpeed * Time.deltaTime * -Vector3.forward);
         _rigidBody.freezeRotation = false;
     }
 
     private void Lose()
     {
         _state = States.Dead;
-        flyEnd?.Invoke();
-        death?.Invoke("death");
+        FlyEnd?.Invoke();
+        Death?.Invoke("death");
     }
 
-    private void Finish()
+    private void Win()
     {
         _state = States.NextLevel;
-        finish?.Invoke("finish");
+        Finish?.Invoke("finish");
     }
 }
 [System.Serializable]
-public class death : UnityEvent<string> { }
+public class Death : UnityEvent<string> { }
 [System.Serializable]
-public class finish : UnityEvent<string> { }
+public class Finish : UnityEvent<string> { }
 [System.Serializable]
-public class gasChanged : UnityEvent<float> { }
+public class GasChanged : UnityEvent<float> { }

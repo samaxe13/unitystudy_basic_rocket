@@ -6,9 +6,9 @@ public class RocketMenu : MonoBehaviour
 {
     [SerializeField] private float _flySpeed = 100f;
 
-    public UnityEvent flyStart;
-    public UnityEvent flyEnd;
-    public UnityEvent death;
+    public UnityEvent FlyStart;
+    public UnityEvent FlyEnd;
+    public UnityEvent Death;
 
     private Rigidbody _rigidBody;
     private AudioSource _audioSource;
@@ -30,22 +30,22 @@ public class RocketMenu : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space))
             {
-                _rigidBody.AddRelativeForce(Vector3.up * _flySpeed * Time.deltaTime);
-                if (_audioSource.isPlaying == false) flyStart?.Invoke();
+                _rigidBody.AddRelativeForce(_flySpeed * Time.deltaTime * Vector3.up);
+                if (_audioSource.isPlaying == false) FlyStart?.Invoke();
             }
-            else flyEnd?.Invoke();
+            else FlyEnd?.Invoke();
         }
 
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!_collisionOff && collision.gameObject.tag == "Respawn")
+        if (!_collisionOff && collision.gameObject.CompareTag("Respawn"))
         {
             _state = States.Dead;
             _rigidBody.AddRelativeForce(Vector3.back * _flySpeed);
             _collisionOff = true;
-            death?.Invoke();
+            Death?.Invoke();
             Invoke(nameof(LoadNextLevel), 3f);
         }
     }

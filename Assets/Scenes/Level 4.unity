@@ -226,6 +226,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2087405479690867696, guid: 6df1897d4fea50e41ab2de32e6c01e5e, type: 3}
+      propertyPath: m_Value
+      value: 1000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6df1897d4fea50e41ab2de32e6c01e5e, type: 3}
 --- !u!1 &548330083
@@ -760,6 +764,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 175631347548895605}
     - target: {fileID: 672350979559159768, guid: 051e52af05925c5429d2ec8392252549, type: 3}
+      propertyPath: _gasBar
+      value: 
+      objectReference: {fileID: 1139030983}
+    - target: {fileID: 672350979559159768, guid: 051e52af05925c5429d2ec8392252549, type: 3}
+      propertyPath: _rocket
+      value: 
+      objectReference: {fileID: 175631347548895605}
+    - target: {fileID: 672350979559159768, guid: 051e52af05925c5429d2ec8392252549, type: 3}
       propertyPath: gasBarFill
       value: 
       objectReference: {fileID: 1067532049}
@@ -830,9 +842,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1495288213, guid: 4af9c48fdd37da249b095d46fbe106cb, type: 3}
+      propertyPath: GasChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1943454719}
+    - target: {fileID: 1495288213, guid: 4af9c48fdd37da249b095d46fbe106cb, type: 3}
       propertyPath: gasChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1943454719}
+    - target: {fileID: 1495288213, guid: 4af9c48fdd37da249b095d46fbe106cb, type: 3}
+      propertyPath: GasChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateUI
+      objectReference: {fileID: 0}
     - target: {fileID: 1495288213, guid: 4af9c48fdd37da249b095d46fbe106cb, type: 3}
       propertyPath: gasChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: UpdateUI
@@ -1029,12 +1049,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 536400220, guid: 5242bcb76aeeaa24c8bfe1888bf79e07, type: 3}
+      propertyPath: _moveSpeed
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 536400220, guid: 5242bcb76aeeaa24c8bfe1888bf79e07, type: 3}
       propertyPath: moveProgress
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 536400220, guid: 5242bcb76aeeaa24c8bfe1888bf79e07, type: 3}
       propertyPath: movePosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 536400220, guid: 5242bcb76aeeaa24c8bfe1888bf79e07, type: 3}
+      propertyPath: _movePosition.y
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 5425251637441463975, guid: 5242bcb76aeeaa24c8bfe1888bf79e07, type: 3}
       propertyPath: m_RootOrder

@@ -5,17 +5,17 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField] private Rocket rocket;
     private int _activeLevelIndex;
-    private string _currentLevel = "current level";
+    private readonly string _currentLevel = "current level";
 
     private void Start()
     {
         _activeLevelIndex = SceneManager.GetActiveScene().buildIndex;
         if (PlayerPrefs.GetInt(_currentLevel) != _activeLevelIndex) PlayerPrefs.SetInt(_currentLevel, _activeLevelIndex);
-        rocket.death.AddListener(HandleLoading);
-        rocket.finish.AddListener(HandleLoading);
+        rocket.Death.AddListener(LevelLoader);
+        rocket.Finish.AddListener(LevelLoader);
     }
 
-    private void HandleLoading(string eventName)
+    private void LevelLoader(string eventName)
     {
         switch (eventName)
         {

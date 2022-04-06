@@ -58,6 +58,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed6d19f5147cfe46b77afa364483dbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gasBar: {fileID: 0}
-  gasBarFill: {fileID: 0}
-  rocket: {fileID: 0}
+  _gasBar: {fileID: 0}
+  _gasBarFill: {fileID: 0}
+  _rocket: {fileID: 0}

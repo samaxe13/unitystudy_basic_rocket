@@ -6,6 +6,6 @@ public class rotatingPad : MonoBehaviour
 
     private void Update()
     {
-        transform.Rotate(Vector3.forward * _rotSpeed * Time.deltaTime);
+        transform.Rotate(_rotSpeed * Time.deltaTime * Vector3.forward);
     }
 }
