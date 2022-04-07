@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rocket: {fileID: 0}
+  activeLevelIndex: 0
 --- !u!114 &672350979559159768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,5 +60,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gasBar: {fileID: 0}
-  _gasBarFill: {fileID: 0}
   _rocket: {fileID: 0}
+  _levelName: {fileID: 0}
+  _triesText: {fileID: 0}

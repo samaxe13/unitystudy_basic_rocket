@@ -648,12 +648,16 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 76712811411123611, guid: 421f3a0d9cc7bb94eaad74e918ae9f4a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 70.04852
+      objectReference: {fileID: 0}
+    - target: {fileID: 76712811411123611, guid: 421f3a0d9cc7bb94eaad74e918ae9f4a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 76712811411123611, guid: 421f3a0d9cc7bb94eaad74e918ae9f4a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 76712811411123611, guid: 421f3a0d9cc7bb94eaad74e918ae9f4a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1302,6 +1306,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 76712811411123611, guid: 421f3a0d9cc7bb94eaad74e918ae9f4a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 79.54093
+      objectReference: {fileID: 0}
+    - target: {fileID: 76712811411123611, guid: 421f3a0d9cc7bb94eaad74e918ae9f4a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1311,7 +1319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 76712811411123611, guid: 421f3a0d9cc7bb94eaad74e918ae9f4a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 76712811411123611, guid: 421f3a0d9cc7bb94eaad74e918ae9f4a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1411,6 +1419,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1816806965, guid: 3d7694ce4a2a71945b21b31a1b8c2216, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4484858608137760179, guid: 3d7694ce4a2a71945b21b31a1b8c2216, type: 3}
       propertyPath: m_Name
       value: GasTank

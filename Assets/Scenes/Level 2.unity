@@ -493,10 +493,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2087405478648638536, guid: 6df1897d4fea50e41ab2de32e6c01e5e, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2087405478766172460, guid: 6df1897d4fea50e41ab2de32e6c01e5e, type: 3}
       propertyPath: m_Name
       value: UI
@@ -587,6 +583,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6df1897d4fea50e41ab2de32e6c01e5e, type: 3}
+--- !u!114 &595145358 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 315464848, guid: 6df1897d4fea50e41ab2de32e6c01e5e, type: 3}
+  m_PrefabInstance: {fileID: 595145357}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &642848973
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -996,6 +1003,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 175631347548895605}
     - target: {fileID: 672350979559159768, guid: 051e52af05925c5429d2ec8392252549, type: 3}
+      propertyPath: _levelName
+      value: 
+      objectReference: {fileID: 1901906432}
+    - target: {fileID: 672350979559159768, guid: 051e52af05925c5429d2ec8392252549, type: 3}
+      propertyPath: _triesText
+      value: 
+      objectReference: {fileID: 595145358}
+    - target: {fileID: 672350979559159768, guid: 051e52af05925c5429d2ec8392252549, type: 3}
       propertyPath: gasBarFill
       value: 
       objectReference: {fileID: 588979398}
@@ -1152,6 +1167,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1711870739}
     m_Modifications:
+    - target: {fileID: 1816806965, guid: 3d7694ce4a2a71945b21b31a1b8c2216, type: 3}
+      propertyPath: _rocket
+      value: 
+      objectReference: {fileID: 175631347548895605}
     - target: {fileID: 4484858608137760179, guid: 3d7694ce4a2a71945b21b31a1b8c2216, type: 3}
       propertyPath: m_Name
       value: GasTank (1)
@@ -1162,15 +1181,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4484858608137760191, guid: 3d7694ce4a2a71945b21b31a1b8c2216, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.599156
+      value: -4.43
       objectReference: {fileID: 0}
     - target: {fileID: 4484858608137760191, guid: 3d7694ce4a2a71945b21b31a1b8c2216, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.9660435
+      value: 4.68
       objectReference: {fileID: 0}
     - target: {fileID: 4484858608137760191, guid: 3d7694ce4a2a71945b21b31a1b8c2216, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 25.958342
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4484858608137760191, guid: 3d7694ce4a2a71945b21b31a1b8c2216, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1534,7 +1553,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1711870738}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.769156, y: 8.876043, z: -25.958342}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1637,6 +1656,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 153.72, y: 127.423996, z: 185.78}
+--- !u!114 &1901906432 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1224825423535539221, guid: 6df1897d4fea50e41ab2de32e6c01e5e, type: 3}
+  m_PrefabInstance: {fileID: 595145357}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2141456172
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1644,6 +1674,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1711870739}
     m_Modifications:
+    - target: {fileID: 1816806965, guid: 3d7694ce4a2a71945b21b31a1b8c2216, type: 3}
+      propertyPath: _rocket
+      value: 
+      objectReference: {fileID: 175631347548895605}
     - target: {fileID: 4484858608137760179, guid: 3d7694ce4a2a71945b21b31a1b8c2216, type: 3}
       propertyPath: m_Name
       value: GasTank
@@ -1654,15 +1688,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4484858608137760191, guid: 3d7694ce4a2a71945b21b31a1b8c2216, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.080844
+      value: -19.81
       objectReference: {fileID: 0}
     - target: {fileID: 4484858608137760191, guid: 3d7694ce4a2a71945b21b31a1b8c2216, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.3692498
+      value: 5.56
       objectReference: {fileID: 0}
     - target: {fileID: 4484858608137760191, guid: 3d7694ce4a2a71945b21b31a1b8c2216, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 25.958342
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4484858608137760191, guid: 3d7694ce4a2a71945b21b31a1b8c2216, type: 3}
       propertyPath: m_LocalRotation.w

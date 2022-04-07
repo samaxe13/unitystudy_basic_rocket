@@ -208,6 +208,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7691370399114423932, guid: 807ff76de941e374a84aace764dfa7ad, type: 3}
   m_PrefabInstance: {fileID: 265741017}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &315464848 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 315464848, guid: 6df1897d4fea50e41ab2de32e6c01e5e, type: 3}
+  m_PrefabInstance: {fileID: 2087405479614004419}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &345439521
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -363,6 +374,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1816806965, guid: 3d7694ce4a2a71945b21b31a1b8c2216, type: 3}
+      propertyPath: _rocket
+      value: 
+      objectReference: {fileID: 880133075}
     - target: {fileID: 4484858608137760179, guid: 3d7694ce4a2a71945b21b31a1b8c2216, type: 3}
       propertyPath: m_Name
       value: GasTank
@@ -552,11 +567,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7691370399114423932, guid: 807ff76de941e374a84aace764dfa7ad, type: 3}
   m_PrefabInstance: {fileID: 533137304}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &583498762 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2087405479039844553, guid: 6df1897d4fea50e41ab2de32e6c01e5e, type: 3}
-  m_PrefabInstance: {fileID: 2087405479614004419}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &613646391
 PrefabInstance:
@@ -1272,6 +1282,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7691370399114423932, guid: 807ff76de941e374a84aace764dfa7ad, type: 3}
   m_PrefabInstance: {fileID: 1898346320}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1954717857 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1224825423535539221, guid: 6df1897d4fea50e41ab2de32e6c01e5e, type: 3}
+  m_PrefabInstance: {fileID: 2087405479614004419}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2123336554
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1411,9 +1432,37 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1495288213, guid: 4af9c48fdd37da249b095d46fbe106cb, type: 3}
+      propertyPath: GasPickedUp.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495288213, guid: 4af9c48fdd37da249b095d46fbe106cb, type: 3}
+      propertyPath: GasPickedUp.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495288213, guid: 4af9c48fdd37da249b095d46fbe106cb, type: 3}
       propertyPath: GasChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 996771296}
+    - target: {fileID: 1495288213, guid: 4af9c48fdd37da249b095d46fbe106cb, type: 3}
+      propertyPath: GasPickedUp.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 175631347548895605}
+    - target: {fileID: 1495288213, guid: 4af9c48fdd37da249b095d46fbe106cb, type: 3}
+      propertyPath: GasPickedUp.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495288213, guid: 4af9c48fdd37da249b095d46fbe106cb, type: 3}
+      propertyPath: GasPickedUp.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayOneShot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495288213, guid: 4af9c48fdd37da249b095d46fbe106cb, type: 3}
+      propertyPath: GasPickedUp.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.AudioSource, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495288213, guid: 4af9c48fdd37da249b095d46fbe106cb, type: 3}
+      propertyPath: GasPickedUp.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.AudioClip, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 175631348507308262, guid: 4af9c48fdd37da249b095d46fbe106cb, type: 3}
       propertyPath: m_Name
       value: Rocket
@@ -1464,6 +1513,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4af9c48fdd37da249b095d46fbe106cb, type: 3}
+--- !u!82 &175631347548895605 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4128618717776804521, guid: 4af9c48fdd37da249b095d46fbe106cb, type: 3}
+  m_PrefabInstance: {fileID: 175631347548895604}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &672350979559159766
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1532,9 +1586,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 880133075}
     - target: {fileID: 672350979559159768, guid: 051e52af05925c5429d2ec8392252549, type: 3}
-      propertyPath: _gasBarFill
+      propertyPath: _levelName
       value: 
-      objectReference: {fileID: 583498762}
+      objectReference: {fileID: 1954717857}
+    - target: {fileID: 672350979559159768, guid: 051e52af05925c5429d2ec8392252549, type: 3}
+      propertyPath: _triesText
+      value: 
+      objectReference: {fileID: 315464848}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 051e52af05925c5429d2ec8392252549, type: 3}
 --- !u!1001 &1662865478953862155

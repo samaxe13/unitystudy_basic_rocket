@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class Rocket : MonoBehaviour
 {
-    [SerializeField] private float _gasTotal = 300f;
+    [SerializeField] private float _gasTotal = 300f; // TODO: create _gasEnabled flag to turn off gas logics in first levels
     [SerializeField] private float _gasPerSecond = 100f;
     [SerializeField] private float _gasPerTank = 50f;
     [SerializeField] private float _rotSpeed = 200f;
@@ -11,8 +11,8 @@ public class Rocket : MonoBehaviour
 
     public float GasMax = 300f;
 
-    public GasChanged GasChanged;
     public UnityEvent GasPickedUp;
+    public GasChanged GasChanged;
     public UnityEvent FlyStart;
     public UnityEvent FlyEnd;
     public Death Death;
@@ -62,15 +62,15 @@ public class Rocket : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider gas)
+    private void OnTriggerEnter(Collider gasCollider)
     {
-        if (_state == States.Playing && gas.gameObject.tag == "Battery")
+        if (_state == States.Playing && gasCollider.gameObject.CompareTag("Battery"))
         {
-            gas.enabled = false;
+            gasCollider.enabled = false;
             _gasTotal += _gasPerTank;
-            GasChanged?.Invoke(_gasTotal);
             GasPickedUp?.Invoke();
-            Destroy(gas.gameObject, 2f);
+            GasChanged?.Invoke(_gasTotal);
+            gasCollider.GetComponent<Animator>().SetTrigger("picked");
         }
     }
 
@@ -80,7 +80,7 @@ public class Rocket : MonoBehaviour
         {
             _gasTotal -= _gasPerSecond * Time.deltaTime;
             GasChanged?.Invoke(_gasTotal);
-            _rigidBody.AddRelativeForce(Vector3.up * _flySpeed * Time.deltaTime);
+            _rigidBody.AddRelativeForce(_flySpeed * Time.deltaTime * Vector3.up);
             if (_audioSource.isPlaying == false) FlyStart?.Invoke();
         }
         else FlyEnd?.Invoke();

@@ -199,6 +199,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1858131392}
     m_Modifications:
+    - target: {fileID: 1816806965, guid: 3d7694ce4a2a71945b21b31a1b8c2216, type: 3}
+      propertyPath: _rocket
+      value: 
+      objectReference: {fileID: 175631347548895605}
     - target: {fileID: 4484858608137760179, guid: 3d7694ce4a2a71945b21b31a1b8c2216, type: 3}
       propertyPath: m_Name
       value: GasTank
@@ -966,6 +970,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 175631347548895605}
     - target: {fileID: 672350979559159768, guid: 051e52af05925c5429d2ec8392252549, type: 3}
+      propertyPath: _levelName
+      value: 
+      objectReference: {fileID: 1421869767}
+    - target: {fileID: 672350979559159768, guid: 051e52af05925c5429d2ec8392252549, type: 3}
+      propertyPath: _triesText
+      value: 
+      objectReference: {fileID: 1421869768}
+    - target: {fileID: 672350979559159768, guid: 051e52af05925c5429d2ec8392252549, type: 3}
       propertyPath: gasBarFill
       value: 
       objectReference: {fileID: 597602463}
@@ -1074,8 +1086,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2087405478766172465, guid: 6df1897d4fea50e41ab2de32e6c01e5e, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6df1897d4fea50e41ab2de32e6c01e5e, type: 3}
+--- !u!114 &1421869767 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1224825423535539221, guid: 6df1897d4fea50e41ab2de32e6c01e5e, type: 3}
+  m_PrefabInstance: {fileID: 1421869766}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1421869768 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 315464848, guid: 6df1897d4fea50e41ab2de32e6c01e5e, type: 3}
+  m_PrefabInstance: {fileID: 1421869766}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1590642145 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 672350979559159768, guid: 051e52af05925c5429d2ec8392252549, type: 3}
@@ -1291,6 +1329,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1858131392}
     m_Modifications:
+    - target: {fileID: 1816806965, guid: 3d7694ce4a2a71945b21b31a1b8c2216, type: 3}
+      propertyPath: _rocket
+      value: 
+      objectReference: {fileID: 175631347548895605}
     - target: {fileID: 4484858608137760179, guid: 3d7694ce4a2a71945b21b31a1b8c2216, type: 3}
       propertyPath: m_Name
       value: GasTank (1)

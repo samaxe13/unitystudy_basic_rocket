@@ -17,7 +17,7 @@ public class MoveObject : MonoBehaviour
 
     private void Update()
     {
-        _moveProgress = Mathf.PingPong(Time.time * _moveSpeed, 1);
+        _moveProgress = Mathf.PingPong(Time.time * _moveSpeed, 1f);
         Vector3 offset = _movePosition * _moveProgress;
         transform.position = _startPosition + offset;
     }
