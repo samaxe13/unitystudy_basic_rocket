@@ -3,14 +3,15 @@ using UnityEngine.Events;
 
 public class Rocket : MonoBehaviour
 {
-    [SerializeField] private float _gasTotal = 300f; // TODO: create _gasEnabled flag to turn off gas logics in first levels
+    [SerializeField] private float _gasTotal = 300f;
     [SerializeField] private float _gasPerSecond = 100f;
     [SerializeField] private float _gasPerTank = 50f;
     [SerializeField] private float _rotSpeed = 200f;
     [SerializeField] private float _flySpeed = 1000f;
 
     public float GasMax = 300f;
-
+    [Header("Events")]
+    [Space]
     public UnityEvent GasPickedUp;
     public GasChanged GasChanged;
     public UnityEvent FlyStart;
@@ -50,7 +51,6 @@ public class Rocket : MonoBehaviour
             switch (collision.gameObject.tag)
             {
                 case "Safe":
-                    print("ok");
                     break;
                 case "Finish":
                     Win();
@@ -66,17 +66,15 @@ public class Rocket : MonoBehaviour
     {
         if (_state == States.Playing && gasCollider.gameObject.CompareTag("Battery"))
         {
-            gasCollider.enabled = false;
-            _gasTotal += _gasPerTank;
             GasPickedUp?.Invoke();
+            _gasTotal += _gasPerTank;
             GasChanged?.Invoke(_gasTotal);
-            gasCollider.GetComponent<Animator>().SetTrigger("picked");
         }
     }
 
     private void Launch()
     {
-        if (_gasTotal > 0f && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space)))
+        if (_gasTotal > 0f && Input.GetButton("Launch"))
         {
             _gasTotal -= _gasPerSecond * Time.deltaTime;
             GasChanged?.Invoke(_gasTotal);
@@ -86,11 +84,10 @@ public class Rocket : MonoBehaviour
         else FlyEnd?.Invoke();
     }
 
-    private void RotateRocket() // TODO: 1) GetKey -> GetAxis 2) replace if statements with transform.Rotate(Axis * Vector3.forward * _rotSpeed * Time.deltaTime)
+    private void RotateRocket()
     {
         _rigidBody.freezeRotation = true;
-        if (Input.GetKey(KeyCode.A)) transform.Rotate(_rotSpeed * Time.deltaTime * Vector3.forward);
-        else if (Input.GetKey(KeyCode.D)) transform.Rotate(_rotSpeed * Time.deltaTime * -Vector3.forward);
+        transform.Rotate(_rotSpeed * Input.GetAxis("Rotate") * Time.deltaTime * Vector3.forward);
         _rigidBody.freezeRotation = false;
     }
 

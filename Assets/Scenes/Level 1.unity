@@ -1432,37 +1432,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1495288213, guid: 4af9c48fdd37da249b095d46fbe106cb, type: 3}
-      propertyPath: GasPickedUp.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1495288213, guid: 4af9c48fdd37da249b095d46fbe106cb, type: 3}
-      propertyPath: GasPickedUp.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1495288213, guid: 4af9c48fdd37da249b095d46fbe106cb, type: 3}
       propertyPath: GasChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 996771296}
-    - target: {fileID: 1495288213, guid: 4af9c48fdd37da249b095d46fbe106cb, type: 3}
-      propertyPath: GasPickedUp.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 175631347548895605}
-    - target: {fileID: 1495288213, guid: 4af9c48fdd37da249b095d46fbe106cb, type: 3}
-      propertyPath: GasPickedUp.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1495288213, guid: 4af9c48fdd37da249b095d46fbe106cb, type: 3}
-      propertyPath: GasPickedUp.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlayOneShot
-      objectReference: {fileID: 0}
-    - target: {fileID: 1495288213, guid: 4af9c48fdd37da249b095d46fbe106cb, type: 3}
-      propertyPath: GasPickedUp.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.AudioSource, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 1495288213, guid: 4af9c48fdd37da249b095d46fbe106cb, type: 3}
-      propertyPath: GasPickedUp.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.AudioClip, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 175631348507308262, guid: 4af9c48fdd37da249b095d46fbe106cb, type: 3}
       propertyPath: m_Name
       value: Rocket
@@ -1513,11 +1485,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4af9c48fdd37da249b095d46fbe106cb, type: 3}
---- !u!82 &175631347548895605 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 4128618717776804521, guid: 4af9c48fdd37da249b095d46fbe106cb, type: 3}
-  m_PrefabInstance: {fileID: 175631347548895604}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &672350979559159766
 PrefabInstance:
   m_ObjectHideFlags: 0

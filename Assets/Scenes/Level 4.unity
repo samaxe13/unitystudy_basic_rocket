@@ -196,14 +196,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2087405478648638536, guid: 6df1897d4fea50e41ab2de32e6c01e5e, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2087405478648638536, guid: 6df1897d4fea50e41ab2de32e6c01e5e, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2087405478766172460, guid: 6df1897d4fea50e41ab2de32e6c01e5e, type: 3}
       propertyPath: m_Name
       value: UI
@@ -291,14 +283,6 @@ PrefabInstance:
     - target: {fileID: 2087405478766172464, guid: 6df1897d4fea50e41ab2de32e6c01e5e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2087405478766172465, guid: 6df1897d4fea50e41ab2de32e6c01e5e, type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2087405479690867696, guid: 6df1897d4fea50e41ab2de32e6c01e5e, type: 3}
-      propertyPath: m_Value
-      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6df1897d4fea50e41ab2de32e6c01e5e, type: 3}
