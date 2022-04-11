@@ -1722,6 +1722,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2087405478766172465, guid: 6df1897d4fea50e41ab2de32e6c01e5e, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6df1897d4fea50e41ab2de32e6c01e5e, type: 3}
 --- !u!1001 &2982189064532921544

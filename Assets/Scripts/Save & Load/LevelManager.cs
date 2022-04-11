@@ -6,37 +6,25 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Rocket rocket;
     [HideInInspector] public int activeLevelIndex;
     private readonly string _currentLevel = "current level";
-    private readonly string _levelNumberOfTries = "level number of tries";
+    private readonly string _numberOfTries = "level number of tries";
 
     private void Start()
     {
-        PlayerData data = SaveSystem.LoadData();
         activeLevelIndex = SceneManager.GetActiveScene().buildIndex;
-        if (PlayerPrefs.GetInt(_currentLevel) != activeLevelIndex)
-        {
-            PlayerPrefs.SetInt(_currentLevel, activeLevelIndex);
-            PlayerPrefs.SetInt(_levelNumberOfTries, data.numberOfTriesList[activeLevelIndex - 1]);
-        }
+        if (PlayerPrefs.GetInt(_currentLevel) != activeLevelIndex) PlayerPrefs.SetInt(_currentLevel, activeLevelIndex);
         rocket.Death.AddListener(LevelLoader);
         rocket.Finish.AddListener(LevelLoader);
     }
 
     private void LevelLoader(string eventName)
     {
-        switch (eventName)
-        {
-            case "death":
-                Invoke(nameof(RestartLevel), 2f);
-                break;
-            case "finish":
-                Invoke(nameof(LoadNextLevel), 2f);
-                break;
-        }
+        if (eventName == nameof(rocket.Death)) Invoke(nameof(RestartLevel), 2f);
+        else if (eventName == nameof(rocket.Finish)) Invoke(nameof(LoadNextLevel), 2f);
     }
 
     private void RestartLevel()
     {
-        PlayerPrefs.SetInt(_levelNumberOfTries, PlayerPrefs.GetInt(_levelNumberOfTries) + 1);
+        PlayerPrefs.SetInt(_numberOfTries, PlayerPrefs.GetInt(_numberOfTries) + 1);
         SceneManager.LoadScene(PlayerPrefs.GetInt(_currentLevel));
     }
 
@@ -47,8 +35,6 @@ public class LevelManager : MonoBehaviour
             activeLevelIndex = -1;
             PlayerPrefs.SetInt(_currentLevel, 1);
         }
-        PlayerPrefs.SetInt(_levelNumberOfTries, PlayerPrefs.GetInt(_levelNumberOfTries) + 1);
-        SaveSystem.SaveData(this);
         SceneManager.LoadScene(activeLevelIndex + 1);
     }
 

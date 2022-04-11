@@ -10,13 +10,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _triesText;
 
     private readonly string _currentLevel = "current level";
-    private readonly string _levelNumberOfTries = "level number of tries";
+    private readonly string _numberOfTries = "level number of tries";
 
     private void Start()
     {
         _gasBar.maxValue = _rocket.GasMax;
         _levelName.text = LevelNames.Names[PlayerPrefs.GetInt(_currentLevel) - 1];
-        _triesText.text = $"tries: {PlayerPrefs.GetInt(_levelNumberOfTries)}";
+        _triesText.text = $"deaths: {PlayerPrefs.GetInt(_numberOfTries)}";
         UpdateUI(_rocket.GasMax);
     }
 

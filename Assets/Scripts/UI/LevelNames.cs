@@ -13,6 +13,6 @@ public class LevelNames
         "Seventh kingdom",
         "Eighth lover",
         "Ninth life",
-        "Tenth tail",
+        "Tenth tail"
     };
 }

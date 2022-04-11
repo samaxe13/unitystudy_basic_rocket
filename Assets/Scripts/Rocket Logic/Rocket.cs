@@ -12,7 +12,6 @@ public class Rocket : MonoBehaviour
     public float GasMax = 300f;
     [Header("Events")]
     [Space]
-    public UnityEvent GasPickedUp;
     public GasChanged GasChanged;
     public UnityEvent FlyStart;
     public UnityEvent FlyEnd;
@@ -53,10 +52,10 @@ public class Rocket : MonoBehaviour
                 case "Safe":
                     break;
                 case "Finish":
-                    Win();
+                    EndLevel(nameof(Finish));
                     break;
                 default:
-                    Lose();
+                    EndLevel(nameof(Death));
                     break;
             }
         }
@@ -66,7 +65,9 @@ public class Rocket : MonoBehaviour
     {
         if (_state == States.Playing && gasCollider.gameObject.CompareTag("Battery"))
         {
-            GasPickedUp?.Invoke();
+            gasCollider.gameObject.GetComponent<BoxCollider>().enabled = false;
+            gasCollider.gameObject.GetComponent<AudioSource>().Play();
+            gasCollider.gameObject.GetComponent<Animator>().SetTrigger("picked");
             _gasTotal += _gasPerTank;
             GasChanged?.Invoke(_gasTotal);
         }
@@ -91,17 +92,18 @@ public class Rocket : MonoBehaviour
         _rigidBody.freezeRotation = false;
     }
 
-    private void Lose()
+    private void EndLevel(string endEvent)
     {
-        _state = States.Dead;
-        FlyEnd?.Invoke();
-        Death?.Invoke("death");
-    }
-
-    private void Win()
-    {
-        _state = States.NextLevel;
-        Finish?.Invoke("finish");
+        if (endEvent == nameof(Finish))
+        {
+            _state = States.NextLevel;
+            Finish?.Invoke(endEvent);
+        }
+        else if (endEvent == nameof(Death))
+        {
+            _state = States.Dead;
+            Death?.Invoke(endEvent);
+        }
     }
 }
 [System.Serializable]

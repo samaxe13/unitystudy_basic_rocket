@@ -1,10 +1,12 @@
+/* deprecated
+
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 public static class SaveSystem
 {
-   public static void SaveData(LevelManager levelManager)
+    public static void SaveData(LevelManager levelManager)
     {
         BinaryFormatter formatter = new();
         string path = $"{Application.persistentDataPath}/data.bruh";
@@ -32,3 +34,5 @@ public static class SaveSystem
         }
     }
 }
+
+*/
